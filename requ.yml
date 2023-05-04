@@ -1,0 +1,9 @@
+# === Start setup ===
+# It is not advised to change any parameters in this file.
+# Every change in a file can lead to bad consequences in the form of faulty software.
+# In short: Be careful with this file!
+screen:
+  keypad: true
+  no_delay: true
+default:
+  default_filename: 'untitled.py'
