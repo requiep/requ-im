@@ -1,6 +1,8 @@
-from pygments.lexers import PythonLexer
+from pygments.lexers import PythonLexer, CLexer, MarkdownLexer, JsonLexer
+from pygments.lexers.shell import BashLexer
 from pygments.token import Keyword, Name, Comment, String, \
     Number, Operator, Token
+
 from .syntax_parser import SyntaxParser
 
 
@@ -24,7 +26,10 @@ class Syntax(object):
             String: self.syntax_parser.syntax_list[11],
             Number: self.syntax_parser.syntax_list[12]
         }
-
         self.lexers: dict = {
-            "py": PythonLexer
+            "py": PythonLexer,
+            "c": CLexer,
+            "json": JsonLexer,
+            "md": MarkdownLexer,
+            'sh': BashLexer
         }

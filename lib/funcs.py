@@ -1,14 +1,18 @@
 import curses
 
+from lib.utils import Logger
+
 
 class Functions(object):
     def __init__(self, editor=None) -> None:
         self.modified: int = 0
-        self.filename: str = ''
+        self.filename = None
         self.total_lines,  self.search_index = 0, 0
-        self.buffer, self.search_results = [], []
+        self.buffer, self.search_results = [], None
         self.offset_y, self.offset_x = 0, 0
         self.current_y, self.current_x = 0, 0
+
+        self.logger = Logger('lib/funcs.py')
 
         self.editor = editor
 
@@ -56,8 +60,8 @@ class Functions(object):
             del self.buffer[self.current_y]
             self.current_x = 0
             self.total_lines -= 1
-        except Exception:
-            pass
+        except Exception as error:
+            self.logger.logger('delete_line', f'{error}')
         self.modified += 1
         if self.current_y >= self.total_lines:
             self.current_y = self.total_lines - 1
@@ -105,8 +109,8 @@ class Functions(object):
                         if self.current_x == 0:
                             break
                         self.move_cursor(curses.KEY_LEFT)
-            except Exception:
-                pass
+            except Exception as error:
+                self.logger.logger('skip_word_0', f'{error}')
         if key == 560:
             self.move_cursor(curses.KEY_RIGHT)
             try:
@@ -116,8 +120,8 @@ class Functions(object):
                 elif self.buffer[self.current_y][self.current_x] == ord(' '):
                     while self.buffer[self.current_y][self.current_x] == ord(' '):
                         self.move_cursor(curses.KEY_RIGHT)
-            except Exception:
-                pass
+            except Exception as error:
+                self.logger.logger('skip_word_1', f'{error}')
 
     def search(self) -> None:
         self.search_results = []

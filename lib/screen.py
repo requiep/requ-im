@@ -1,5 +1,6 @@
-from .funcs import Functions
 import sys
+
+from .funcs import Functions
 
 from pygments import highlight
 from pygments.formatters import TerminalFormatter
@@ -36,12 +37,14 @@ class Screen(object):
                     row_length = self.funcs.editor.cols
                 try:
                     print_bufferer += highlight(
-                        ''.join([chr(c) for c in self.funcs.buffer[buffer_row][self.funcs.offset_x: self.funcs.offset_x + row_length]]),
+                        ''.join([chr(c) for c in self.funcs.buffer[buffer_row][
+                                                 self.funcs.offset_x: self.funcs.offset_x + row_length]]),
                         self.funcs.editor.syntax_module.lexers[self.funcs.filename.split('.')[-1]](),
                         TerminalFormatter(bg='dark', colorscheme=self.funcs.editor.syntax_module.color_scheme))[:-1]
                 except Exception:
                     print_bufferer += ''.join(
-                        [chr(c) for c in self.funcs.buffer[buffer_row][self.funcs.offset_x: self.funcs.offset_x + row_length]])
+                        [chr(c) for c in self.funcs.buffer[buffer_row][
+                                         self.funcs.offset_x: self.funcs.offset_x + row_length]])
             print_bufferer += '\x1b[K'
             print_bufferer += '\r\n'
         return print_bufferer

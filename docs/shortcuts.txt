@@ -1,0 +1,13 @@
+Ctrl N - New File
+Ctrl S - Save File
+
+Ctrl F - Search Word
+Ctrl R - Remove line
+
+Ctrl L - Scroll End of text
+Ctrl B - Scroll Up of text
+Ctrl T - Move right of line
+Ctrl D - Move left of line
+
+Ctrl A - Set Y down
+Ctrl K - set Y top
