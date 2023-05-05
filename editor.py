@@ -1,9 +1,10 @@
-from lib.modules.syntax import Syntax
-from lib.system import FileSystem
-from lib.modules import Functions
-from lib.config import Config
 import curses
 import sys
+
+from lib.modules.syntax import Syntax
+from lib.system import FileSystem
+from lib import Functions, Screen
+from lib.config import Config
 
 
 class Requ(object):
@@ -15,12 +16,13 @@ class Requ(object):
         self.screen.nodelay(self.config.requ['screen']['no_delay'])
 
         self.funcs: Functions = Functions(self)
-        self.file_system: FileSystem = FileSystem(self.funcs)
+        self.screen_module: Screen = Screen(self.funcs)
+        self.file_system: FileSystem = FileSystem(self.funcs, self.screen_module)
 
         self.rows, self.cols = self.screen.getmaxyx()
         self.rows -= 1
 
-        self.syntax_module: Syntax = Syntax()
+        self.syntax_module: Syntax = Syntax(self.config.requ)
 
         curses.raw()
         curses.noecho()
@@ -29,12 +31,11 @@ class Requ(object):
         self.rows, self.cols = self.screen.getmaxyx()
         self.rows -= 1
         self.screen.refresh()
-        self.funcs.update_screen()
+        self.screen_module.update_screen()
 
     def read_keyboard(self) -> None:
-        def ctrl(c):
-            return ((c) & 0x1f)
-
+        def ctrl(code: int = 0) -> int:
+            return code & 0x1f
         c = -1
         while c == -1:
             c = self.screen.getch()
@@ -54,8 +55,6 @@ class Requ(object):
             self.funcs.search()
         elif c == ctrl(ord('d')):
             self.funcs.delete_line()
-        elif c == ctrl(ord('t')):
-            self.funcs.indent()
         elif c == curses.KEY_RESIZE:
             self.resize_window()
         elif c == curses.KEY_HOME:
@@ -126,7 +125,7 @@ class Requ(object):
                 sys.stdout.write(chr(c))
                 sys.stdout.flush()
                 word += chr(c)
-        self.funcs.update_screen()
+        self.screen_module.update_screen()
         self.screen.refresh()
         return word
 
@@ -136,7 +135,7 @@ class Requ(object):
         sys.exit(0)
 
     def start(self) -> None:
-        self.funcs.update_screen()
+        self.screen_module.update_screen()
         while True:
             self.read_keyboard()
-            self.funcs.update_screen()
+            self.screen_module.update_screen()

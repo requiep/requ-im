@@ -1,7 +1,8 @@
 class FileSystem(object):
-    def __init__(self, funcs_) -> None:
-        self.highlight = None
+    def __init__(self, funcs_=None, screen=None) -> None:
         self.funcs_ = funcs_
+        self.screen = screen
+        self.highlight: bool = self.funcs_.editor.config.requ['default']['default_highlight']
 
     def open_file(self, filename: str = None) -> None:
         self.funcs_.reset_editor()
@@ -10,7 +11,7 @@ class FileSystem(object):
                 content = f.read().split('\n')
                 for row in content[:-1]:
                     self.funcs_.buffer.append([ord(c) for c in row])
-        except:
+        except Exception:
             self.funcs_.buffer.append([])
         if filename:
             self.funcs_.filename = filename
@@ -19,7 +20,7 @@ class FileSystem(object):
         else:
             self.highlight = True
         self.funcs_.total_lines = len(self.funcs_.buffer)
-        self.funcs_.update_screen()
+        self.screen.update_screen()
 
     def save_file(self) -> None:
         with open(self.funcs_.filename, 'w') as f:

@@ -4,7 +4,7 @@ import sys
 from editor import Requ
 
 
-def main(*args):
+def main(*args) -> None:
     editor = Requ()
     if len(sys.argv) >= 2:
         editor.file_system.open_file(sys.argv[1])

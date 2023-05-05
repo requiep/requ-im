@@ -1,25 +1,30 @@
 from pygments.lexers import PythonLexer
 from pygments.token import Keyword, Name, Comment, String, \
     Number, Operator, Token
+from .syntax_parser import SyntaxParser
 
 
 class Syntax(object):
-    def __init__(self) -> None:
+    def __init__(self, config: dict = None) -> None:
+        self.config: dict = config
+        self.syntax_parser: SyntaxParser = SyntaxParser(self.config)
+
         self.color_scheme: dict = {
-            Token: ('white', 'white'),
-            Comment: ('gray', 'gray'),
-            Comment.Preproc: ('gray', 'gray'),
-            Keyword: ('red', 'red'),
-            Keyword.Type: ('red', 'red'),
-            Operator.Word: ('green', 'green'),
-            Name.Builtin: ('cyan', 'cyan'),
-            Name.Function: ('green', 'green'),
-            Name.Class: ('blue', 'blue'),
-            Name.Decorator: ('blue', 'blue'),
-            Name.Variable: ('magenta', 'magenta'),
-            String: ('green', 'green'),
-            Number: ('blue', 'blue')
+            Token: self.syntax_parser.syntax_list[0],
+            Comment: self.syntax_parser.syntax_list[1],
+            Comment.Preproc: self.syntax_parser.syntax_list[2],
+            Keyword: self.syntax_parser.syntax_list[3],
+            Keyword.Type: self.syntax_parser.syntax_list[4],
+            Operator.Word: self.syntax_parser.syntax_list[5],
+            Name.Builtin: self.syntax_parser.syntax_list[6],
+            Name.Function: self.syntax_parser.syntax_list[7],
+            Name.Class: self.syntax_parser.syntax_list[8],
+            Name.Decorator: self.syntax_parser.syntax_list[9],
+            Name.Variable: self.syntax_parser.syntax_list[10],
+            String: self.syntax_parser.syntax_list[11],
+            Number: self.syntax_parser.syntax_list[12]
         }
-        self.lexers = {
-            'py': PythonLexer
+
+        self.lexers: dict = {
+            "py": PythonLexer
         }
