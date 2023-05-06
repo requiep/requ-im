@@ -1,4 +1,5 @@
 import sys
+import colors as color
 
 from .funcs import Functions
 from lib.utils import Logger
@@ -10,7 +11,6 @@ from pygments.formatters import TerminalFormatter
 class Screen(object):
     def __init__(self, funcs: Functions = None) -> None:
         self.funcs: Functions = funcs
-
 
     def print_status_bar(self) -> str:
         status = '\x1b[7m'
@@ -40,7 +40,8 @@ class Screen(object):
                 try:
                     print_bufferer += highlight(
                         ''.join([chr(c) for c in self.funcs.buffer[buffer_row][
-                                                 self.funcs.offset_x: self.funcs.offset_x + row_length]]),
+                                                 self.funcs.offset_x: self.funcs.offset_x + row_length]]).replace(
+                            '    ', f"|   "),
                         self.funcs.editor.syntax_module.lexers[self.funcs.filename.split('.')[-1]](),
                         TerminalFormatter(bg='dark', colorscheme=self.funcs.editor.syntax_module.color_scheme))[:-1]
                 except Exception as error:

@@ -1,5 +1,6 @@
 from pygments.lexers import PythonLexer, CLexer, MarkdownLexer, JsonLexer
 from pygments.lexers.shell import BashLexer
+from pygments.lexers.data import YamlLexer
 from pygments.token import Keyword, Name, Comment, String, \
     Number, Operator, Token
 
@@ -29,6 +30,7 @@ class Syntax(object):
         self.lexers: dict = {
             "py": PythonLexer,
             "c": CLexer,
+            "yml": YamlLexer,
             "json": JsonLexer,
             "md": MarkdownLexer,
             'sh': BashLexer

@@ -6,6 +6,10 @@ function requ() {
     echo """
       Installing
     """
+  elif [ "$flags" = "-c" ]; then
+    echo """
+      C
+    """
   elif [ "$flags" = "-h" ]; then
     echo """
       Application help menu: requ-im -
@@ -13,6 +17,7 @@ function requ() {
               :args: - [
                 '-i' - installing
                 '-h' - help
+                '-c' - contributing
                 '<path>' - launch editor with far path
               ]
           information:

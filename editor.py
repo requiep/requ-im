@@ -139,3 +139,4 @@ class Requ(object):
         while True:
             self.read_keyboard()
             self.screen_module.update_screen()
+
