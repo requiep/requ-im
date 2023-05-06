@@ -1,6 +1,7 @@
 import sys
 
 from .funcs import Functions
+from lib.utils import Logger
 
 from pygments import highlight
 from pygments.formatters import TerminalFormatter
@@ -9,6 +10,7 @@ from pygments.formatters import TerminalFormatter
 class Screen(object):
     def __init__(self, funcs: Functions = None) -> None:
         self.funcs: Functions = funcs
+
 
     def print_status_bar(self) -> str:
         status = '\x1b[7m'
@@ -41,7 +43,7 @@ class Screen(object):
                                                  self.funcs.offset_x: self.funcs.offset_x + row_length]]),
                         self.funcs.editor.syntax_module.lexers[self.funcs.filename.split('.')[-1]](),
                         TerminalFormatter(bg='dark', colorscheme=self.funcs.editor.syntax_module.color_scheme))[:-1]
-                except Exception:
+                except Exception as error:
                     print_bufferer += ''.join(
                         [chr(c) for c in self.funcs.buffer[buffer_row][
                                          self.funcs.offset_x: self.funcs.offset_x + row_length]])

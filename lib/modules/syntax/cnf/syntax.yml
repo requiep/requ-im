@@ -1,0 +1,52 @@
+token: [
+  "white",
+  "white"
+]
+comment: [
+  "gray",
+  "gray"
+]
+preproc: [
+  "gray",
+  "gray"
+]
+keyword: [
+  "red",
+  "red"
+]
+type: [
+  "red",
+  "red"
+]
+word: [
+  "green",
+  "green"
+]
+builtin: [
+  "cyan",
+  "cyan"
+]
+function: [
+  "green",
+  "green"
+]
+class: [
+  "blue",
+  "blue"
+]
+decorator: [
+  "blue",
+  "blue"
+]
+variable: [
+  "magenta",
+  "magenta"
+]
+string: [
+  "green",
+  "green"
+]
+number: [
+  "blue",
+  "blue"
+]

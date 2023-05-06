@@ -1,8 +1,13 @@
+from lib.utils import Logger
+
+
 class FileSystem(object):
     def __init__(self, funcs_=None, screen=None) -> None:
         self.funcs_ = funcs_
         self.screen = screen
         self.highlight: bool = self.funcs_.editor.config.requ['default']['default_highlight']
+
+        self.logger = Logger('lib/system/filesystem.py')
 
     def open_file(self, filename: str = None) -> None:
         self.funcs_.reset_editor()
@@ -11,8 +16,10 @@ class FileSystem(object):
                 content = f.read().split('\n')
                 for row in content[:-1]:
                     self.funcs_.buffer.append([ord(c) for c in row])
-        except Exception:
+                self.funcs_.buffer.append([ord(c) for c in content[-1]])
+        except Exception as error:
             self.funcs_.buffer.append([])
+            self.logger.logger('open_file', f'{error}')
         if filename:
             self.funcs_.filename = filename
             if '.txt' in filename:

@@ -22,7 +22,7 @@ class Requ(object):
         self.rows, self.cols = self.screen.getmaxyx()
         self.rows -= 1
 
-        self.syntax_module: Syntax = Syntax(self.config.requ)
+        self.syntax_module: Syntax = Syntax(self.config.syntax)
 
         curses.raw()
         curses.noecho()

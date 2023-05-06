@@ -6,6 +6,6 @@ class SyntaxParser(object):
     @staticmethod
     def parse_syntax_yml(config_dict: dict = None) -> list:
         local_list: list = []
-        for item in config_dict['syntax']:
-            local_list.append(config_dict['syntax'][item])
+        for item in config_dict:
+            local_list.append(config_dict[item])
         return local_list
