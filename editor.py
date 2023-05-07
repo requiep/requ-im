@@ -3,8 +3,8 @@ import sys
 
 from lib.modules.syntax import Syntax
 from lib.system import FileSystem
-from lib import Functions, Screen
 from lib.config import Config
+from lib import Functions, Screen
 
 
 class Requ(object):
@@ -60,11 +60,13 @@ class Requ(object):
         elif c == ord('\n'):
             self.funcs.insert_line()
         elif c == ctrl(ord('a')):
-            if len(self.funcs.buffer[self.funcs.current_y+1])-1 >= self.funcs.current_x:
-                self.funcs.current_y += 1
+            if self.funcs.current_y < self.funcs.total_lines-1:
+                if len(self.funcs.buffer[self.funcs.current_y+1])-1 >= self.funcs.current_x:
+                    self.funcs.current_y += 1
         elif c == ctrl(ord('k')):
-            if len(self.funcs.buffer[self.funcs.current_y - 1]) - 1 >= self.funcs.current_x:
-                self.funcs.current_y -= 1
+            if self.funcs.current_y > 0:
+                if len(self.funcs.buffer[self.funcs.current_y - 1]) - 1 >= self.funcs.current_x:
+                    self.funcs.current_y -= 1
         elif c == 9:
             [self.funcs.insert_char(ord(' ')) for i in range(4)]
         elif c == 353:
@@ -89,13 +91,13 @@ class Requ(object):
             self.funcs.insert_char(c)
 
     def clear_prompt(self, line: str = None) -> None:
-        command_line = '\x1b[' + str(self.rows + 1) + ';' + '0' + 'H'
-        command_line += '\x1b[7m' + line
-        pos = 'Row ' + str(self.funcs.current_y + 1) + ', Col ' + str(self.funcs.current_x + 1)
+        command_line = f'\x1b[{str(self.rows + 1)};0H'
+        command_line += f'\x1b[7m{line}'
+        pos = f'Row {str(self.funcs.current_y + 1)}, Col {str(self.funcs.current_x + 1)}'
         while len(command_line) < self.cols - len(pos) + 10:
             command_line += ' '
         command_line += pos + ' '
-        command_line += '\x1b[' + str(self.rows + 1) + ';' + '9' + 'H'
+        command_line += f'\x1b[{str(self.rows + 1)};9H'
         sys.stdout.write(command_line)
         sys.stdout.flush()
 

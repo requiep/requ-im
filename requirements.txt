@@ -1,3 +1,4 @@
 ansicolors==1.1.8
 Pygments==2.15.1
+pygments-markdown-lexer==0.1.0.dev39
 PyYAML==6.0

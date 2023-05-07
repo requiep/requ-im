@@ -1,5 +1,6 @@
-from pygments.lexers import PythonLexer, CLexer, MarkdownLexer, JsonLexer
+from pygments.lexers import PythonLexer, CLexer, JsonLexer
 from pygments.lexers.shell import BashLexer
+from pygments_markdown_lexer import MarkdownLexer
 from pygments.lexers.data import YamlLexer
 from pygments.token import Keyword, Name, Comment, String, \
     Number, Operator, Token

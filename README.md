@@ -21,7 +21,7 @@ Thus, you download our installer along with the editor via the `git clone` comma
 
 
 ## Documentation
-The documentation for the project is on our website, the link to which is above in the `webiste` line in the project profile on GitHub, by going to it, you will find out all the information, also if you want to see all the documentation without leaving the project, you can use the internal help command or write this command in the project folder `requ docs/wiki.md` this will open the documentation file in your editor
+The documentation for the project is on our website, the link to which is above in the `website` line in the project profile on GitHub, by going to it, you will find out all the information, also if you want to see all the documentation without leaving the project, you can use the internal help command or write this command in the project folder `requ docs/wiki.md` this will open the documentation file in your editor
 
 You can also write me an email for help, the mail is indicated in the profile of the creator of the project
 

@@ -38,9 +38,9 @@ interpret class Int {
         this.scoreboard = scoreboard
         isUsingStack = true
         $execute("execute store result storage $getGlobalStorage() " +
-                 "$getIntStorageBuffer() int 1 run scoreboard players get $name $scoreboard")
+                "$getIntStorageBuffer() int 1 run scoreboard players get $name $scoreboard")
         $execute("data modify storage $getGlobalStorage() $getGlobalStack() append " +
-                 "from storage $getGlobalStorage() $getIntStorageBuffer()")
+                "from storage $getGlobalStorage() $getIntStorageBuffer()")
         $execute("scoreboard players set $name $scoreboard $value")
     }
 
@@ -63,3 +63,5 @@ interpret class Int {
         }
     }
 }
+
+

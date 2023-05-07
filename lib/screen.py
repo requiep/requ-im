@@ -16,14 +16,14 @@ class Screen(object):
 
     def print_status_bar(self) -> str:
         status = '\x1b[7m'
-        status += self.funcs.filename + ' - ' + str(self.funcs.total_lines) + ' lines'
+        status += f'{self.funcs.filename} - {str(self.funcs.total_lines)} lines'
         status += ' modified' if self.funcs.modified else ' saved'
-        pos = 'Row ' + str(self.funcs.current_y + 1) + ', Col ' + str(self.funcs.current_x + 1)
+        pos = f'Row {str(self.funcs.current_y + 1)}, Col {str(self.funcs.current_x + 1)}'
         while len(status) < self.funcs.editor.cols - len(pos) + 3:
             status += ' '
         status += pos + ' '
         status += '\x1b[m'
-        status += '\x1b[' + str(self.funcs.current_y - self.funcs.offset_y + 1) + ';' + str(
+        status += f'\x1b[{str(self.funcs.current_y - self.funcs.offset_y + 1)};' + str(
             self.funcs.current_x - self.funcs.offset_x + 1) + 'H'
         status += '\x1b[?25h'
         return status
@@ -44,9 +44,20 @@ class Screen(object):
                         ''.join([chr(c) for c in self.funcs.buffer[buffer_row][
                                                  self.funcs.offset_x: self.funcs.offset_x + row_length]]),
                         self.funcs.editor.syntax_module.lexers[self.funcs.filename.split('.')[-1]](),
-                        TerminalFormatter(bg='dark', colorscheme=self.funcs.editor.syntax_module.color_scheme))[:-1]
-                    if self.config.requ['editor']['vertical_lines']:
-                        print_bufferer = print_bufferer.replace('    ', '|   ')
+                        TerminalFormatter(bg=self.config.requ['editor']['color_mode'],
+                                          colorscheme=self.funcs.editor.syntax_module.color_scheme))[:-1]
+                    if self.config.requ['editor']['white_space_dot']:
+                        print_bufferer = print_bufferer.replace(' ',
+                                                                f"{self.config.requ['editor']['white_space_dot_sep']}")
+                        if self.config.requ['editor']['vertical_lines']:
+                            print_bufferer = print_bufferer.replace(
+                                f"{self.config.requ['editor']['white_space_dot_sep']*4}",
+                                f"{self.config.requ['editor']['vertical_line_sep']}   ")
+                    else:
+                        if self.config.requ['editor']['vertical_lines']:
+                            print_bufferer = print_bufferer.replace(
+                                '    ',
+                                f"{self.config.requ['editor']['vertical_line_sep']}   ")
                 except Exception as error:
                     print_bufferer += ''.join(
                         [chr(c) for c in self.funcs.buffer[buffer_row][

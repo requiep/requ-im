@@ -10,5 +10,10 @@ default:
   default_highlight: false
 editor:
   vertical_lines: true
+  vertical_line_sep: '|'
+  color_mode: 'dark'
+  white_space_dot: false
+  white_space_dot_sep: '~'
 path:
   log_errors_path: ['bin/logs/', 'errors.log']
+

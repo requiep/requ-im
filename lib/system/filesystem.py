@@ -12,7 +12,7 @@ class FileSystem(object):
     def open_file(self, filename: str = None) -> None:
         self.funcs_.reset_editor()
         try:
-            with open(filename) as f:
+            with open(filename, 'r') as f:
                 content = f.read().split('\n')
                 for row in content[:-1]:
                     self.funcs_.buffer.append([ord(c) for c in row])

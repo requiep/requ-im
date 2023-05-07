@@ -1,11 +1,15 @@
 #!/bin/bash
 
+PYTHON="python3"
+
 function requ() {
   flags=$1
   if [ "$flags" = "-i" ]; then
-    echo """
-      Installing
-    """
+    # Updating pip
+    $2 -m pip install --upgrade pip
+    # Install all modules pip
+    $2 -m pip install -r requirements.txt
+    clear
   elif [ "$flags" = "-c" ]; then
     echo """
       If you want to help us or advise or correct our code,
@@ -34,6 +38,6 @@ function requ() {
               https://github.com/requiep/
     """
   else
-    python setup.py $flags
+     $PYTHON setup.py $flags
   fi
 }

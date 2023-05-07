@@ -11,7 +11,7 @@ class KiwiLexer(RegexLexer):
         'kiwi'
     ]
     filenames = [
-        '*.kiwi'
+        '*.kiwi', '*.kw'
     ]
 
     tokens = {
