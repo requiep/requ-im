@@ -8,7 +8,11 @@ function requ() {
     """
   elif [ "$flags" = "-c" ]; then
     echo """
-      C
+      If you want to help us or advise or correct our code,
+      you can contact us by mail: requiepmail@gmail.com you
+      can also write to the form on our website, you can also
+      send it to github or see more information in the creator's
+      github profile.
     """
   elif [ "$flags" = "-h" ]; then
     echo """

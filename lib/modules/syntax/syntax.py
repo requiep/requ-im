@@ -6,6 +6,8 @@ from pygments.token import Keyword, Name, Comment, String, \
 
 from .syntax_parser import SyntaxParser
 
+from lib.modules.kiwi.lexer import KiwiLexer
+
 
 class Syntax(object):
     def __init__(self, config: dict = None) -> None:
@@ -33,5 +35,6 @@ class Syntax(object):
             "yml": YamlLexer,
             "json": JsonLexer,
             "md": MarkdownLexer,
-            'sh': BashLexer
+            'sh': BashLexer,
+            "kiwi": KiwiLexer
         }

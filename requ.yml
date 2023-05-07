@@ -8,3 +8,7 @@ screen:
 default:
   default_filename: 'untitled.py'
   default_highlight: false
+editor:
+  vertical_lines: true
+path:
+  log_errors_path: ['bin/logs/', 'errors.log']

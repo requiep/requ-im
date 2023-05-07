@@ -1,0 +1,65 @@
+package kiwi
+
+interpret class Int {
+    private lateinit name: $String
+    private lateinit scoreboard: $Scoreboard
+    private isUsingStack: $auto = false
+
+    @WhenDeclaringVariable
+    @ProtectFromScopeCollision
+    inline constructor(
+        name: $String by name or $getUniqueName(),
+        value: $Int by component0 = 0,
+        scoreboard: $Scoreboard = $getGlobalScoreboard(),
+    ) """First constructor"""
+    {
+        this.name = name
+        this.scoreboard = scoreboard
+        $execute("scoreboard players set $name $scoreboard $value")
+    }
+
+    @WhenDeclaringVariable
+    @ProtectFromScopeCollision
+    inline constructor(
+        name: $String by name or $getUniqueName(),
+        scoreboard: $Scoreboard,
+        value: $Int by component0 = 0,
+    ) """Second constructor"""
+    : this(name, value, scoreboard)
+
+    @WhenDeclaringVariable
+    inline constructor(
+        name: $String by name or $getUniqueName(),
+        value: $Int by component0 = 0,
+        scoreboard: $Scoreboard = $getGlobalScoreboard(),
+    ) """Third constructor"""
+    {
+        this.name = name
+        this.scoreboard = scoreboard
+        isUsingStack = true
+        $execute("execute store result storage $getGlobalStorage() " +
+                 "$getIntStorageBuffer() int 1 run scoreboard players get $name $scoreboard")
+        $execute("data modify storage $getGlobalStorage() $getGlobalStack() append " +
+                 "from storage $getGlobalStorage() $getIntStorageBuffer()")
+        $execute("scoreboard players set $name $scoreboard $value")
+    }
+
+    @WhenDeclaringVariable
+    inline constructor(
+        name: $String by name or $getUniqueName(),
+        scoreboard: $Scoreboard,
+        value: $Int by component0 = 0,
+    ) """Fourth constructor"""
+    : this(name, value, scoreboard)
+
+    @WhenLeavingScope
+    inline destructor
+    """Destructor"""
+    {
+        if isUsingStack {
+            $execute("execute store result score $name $scoreboard run data get storage " +
+                     "$getGlobalStorage() $getGlobalStack()[-1]")
+            $execute("data remove storage $getGlobalStorage() $getGlobalStack()[-1]")
+        }
+    }
+}

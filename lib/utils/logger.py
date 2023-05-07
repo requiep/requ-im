@@ -1,10 +1,13 @@
 import datetime
 import os
 
+from lib.config.parser import Config
+
 
 class Logger(object):
     def __init__(self, file_name: str = None) -> None:
-        self.file_name: list = ['bin/logs/', 'errors.log']
+        self.config = Config()
+        self.file_name: list = self.config.requ['path']['log_errors_path']
 
         self.script_file_name: str = file_name
 
