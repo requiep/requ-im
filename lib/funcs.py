@@ -26,6 +26,22 @@ class Functions(object):
         self.search_results = []
         self.search_index = 0
 
+    def y_down(self) -> None:
+        if self.current_y < self.total_lines - 1:
+            if len(self.buffer[self.current_y + 1]) - 1 >= self.current_x:
+                self.current_y += 1
+
+    def y_up(self) -> None:
+        if self.current_y > 0:
+            if len(self.buffer[self.current_y - 1]) - 1 >= self.current_x:
+                self.current_y -= 1
+
+    def scroll_left(self) -> None:
+        self.current_x = 0
+
+    def scroll_right(self) -> None:
+        self.current_x = len(self.buffer[self.current_y]) - 1
+
     def insert_char(self, code: int = None) -> None:
         self.buffer[self.current_y].insert(self.current_x, code)
         self.current_x += 1

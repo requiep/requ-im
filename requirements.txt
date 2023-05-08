@@ -1,4 +1,8 @@
 ansicolors==1.1.8
+flake8==6.0.0
+mccabe==0.7.0
+pycodestyle==2.10.0
+pyflakes==3.0.1
 Pygments==2.15.1
 pygments-markdown-lexer==0.1.0.dev39
 PyYAML==6.0
