@@ -18,7 +18,8 @@ class Requ(object):
 
         self.funcs: Functions = Functions(self)
         self.screen_module: Screen = Screen(self.funcs)
-        self.file_system: FileSystem = FileSystem(self.funcs, self.screen_module)
+        self.file_system: FileSystem = FileSystem(
+                self.funcs, self.screen_module)
 
         self.rows, self.cols = self.screen.getmaxyx()
         self.rows -= 1
@@ -87,4 +88,6 @@ class Requ(object):
         while True:
             self.keybind.key_bind()
             self.screen_module.update_screen()
+
+
 

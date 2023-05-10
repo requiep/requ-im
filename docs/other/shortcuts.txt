@@ -4,6 +4,8 @@ Ctrl S - Save File
 Ctrl F - Search Word
 Ctrl R - Remove line
 
+Ctrl E - Reload Flake
+
 Ctrl L - Scroll End of text
 Ctrl B - Scroll Up of text
 Ctrl T - Move right of line

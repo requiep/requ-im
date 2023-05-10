@@ -18,6 +18,7 @@ class KeyBind(object):
                 "d": self.editor.funcs.scroll_left,
                 "a": self.editor.funcs.y_down,
                 "k": self.editor.funcs.y_up,
+                "e": self.editor.screen_module.reload_flake
             },
         }
 

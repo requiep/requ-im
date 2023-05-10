@@ -1,6 +1,8 @@
 import sys
 import colors as color
 
+from .modules.flake import FlakeRead
+
 from .funcs import Functions
 from lib.utils import Logger
 from lib.config.parser import Config
@@ -14,11 +16,19 @@ class Screen(object):
         self.funcs: Functions = funcs
         self.config = Config()
 
+        self.flake: FlakeRead = FlakeRead()
+        self.flake_data = 'null'
+
+    def reload_flake(self) -> None:
+        ext = self.funcs.filename.split('.')
+        if ext[-1] == 'py':
+            self.flake_data = self.flake.run_flake8(self.funcs.filename)
+
     def print_status_bar(self) -> str:
         status = '\x1b[7m'
         status += f'{self.funcs.filename} - {str(self.funcs.total_lines)} lines'
         status += ' modified' if self.funcs.modified else ' saved'
-        pos = f'Row {str(self.funcs.current_y + 1)}, Col {str(self.funcs.current_x + 1)}'
+        pos = f'P: {self.flake_data}, Row {str(self.funcs.current_y + 1)}, Col {str(self.funcs.current_x + 1)}'
         while len(status) < self.funcs.editor.cols - len(pos) + 3:
             status += ' '
         status += pos + ' '
