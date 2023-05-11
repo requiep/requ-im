@@ -1,12 +1,12 @@
 ![badge](https://img.shields.io/github/languages/top/requiep/requ-im)
 ![badge](https://img.shields.io/github/languages/code-size/requiep/requ-im)
 ![badge](https://img.shields.io/github/license/requiep/requ-im)
-![badge](https://img.shields.io/badge/version-1.23.10-informational)
+![badge](https://img.shields.io/badge/version-1.23.10.01-informational)
 ![badge](https://img.shields.io/badge/platform-MacOS%2C%20Linux%2C%20Windows-lightgrey)
 
 Requ - A text editor designed for quick writing of code and texts, perfect for writing shell scripts, also suitable for markdowns and other similar languages, helps to master other similar programs, has a system of modules, everyone can add their own module for this editor, also has high speed and low energy consumption because its interface is created in the console
 
-Requ - has many advantages over other editors, for example, a convenient system for adding your own syntax highlights through the `Pygments` library, also has the ability to change keyboard bindings and change the color theme, also a `flask8` module that helps to see errors and warnings in any line(only in python), also has many functions that will help in development
+Requ - has many advantages over other editors, for example, a convenient system for adding your own syntax highlights through the `Pygments` library, also has the ability to change keyboard bindings and change the color theme, also a `flake8` module that helps to see errors and warnings in any line(only in python), also has many functions that will help in development
 
 ## Installation
 Installing Requ is very simple, for this you need python version 3.11 and higher and also a couple of minutes of time, open the console, terminal or command line and enter a couple of the following commands there:
@@ -30,3 +30,5 @@ If you want to help in the development of this program, or advise your suggestio
 
 ## License
 Requ uses the [Apache-2.0 license](https://github.com/requiep/requ-im/blob/main/LICENSE)
+
+
