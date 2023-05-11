@@ -21,6 +21,8 @@ function requ() {
   elif [ "$flags" = "-h" ]; then
     echo """
       Application help menu: requ-im -
+          example:
+            requ <FLAG> <PYTHON_INTERPRETER>
           options:
               :args: - [
                 '-i' - installing
