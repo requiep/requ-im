@@ -68,7 +68,7 @@ class Screen(object):
                             print_bufferer = print_bufferer.replace(
                                 '    ',
                                 f"{self.config.requ['editor']['vertical_line_sep']}   ")
-                except Exception as error:
+                except Exception:
                     print_bufferer += ''.join(
                         [chr(c) for c in self.funcs.buffer[buffer_row][
                                          self.funcs.offset_x: self.funcs.offset_x + row_length]])

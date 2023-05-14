@@ -20,7 +20,7 @@ class Logger(object):
                 fileIO.write(f'{date_} {time_} {self.script_file_name}.{place} {message_string}\n')
         except FileNotFoundError:
             os.mkdir(self.file_name[0])
-            with open(self.file_name[0]+self.file_name[1], 'w') as fp:
+            with open(self.file_name[0]+self.file_name[1], 'w'):
                 pass
             with open(self.file_name[0] + self.file_name[1], 'a') as fileIO:
                 fileIO.write(f'{date_} {time_} {self.script_file_name}.{place} {message_string}\n')

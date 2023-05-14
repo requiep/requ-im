@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PYTHON="python3"
+MY_TITLE="Requ"
 
 function requ() {
   flags=$1
@@ -40,6 +41,7 @@ function requ() {
               https://github.com/requiep/
     """
   else
+     echo -e '\033]2;'$MY_TITLE'\007'
      $PYTHON setup.py $flags
   fi
 }

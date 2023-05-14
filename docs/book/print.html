@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Requ Documentation</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="installing/install1.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="custom/custom1.html"><strong aria-hidden="true">2.</strong> Customization for yourself</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference Guide</li><li class="chapter-item expanded "><a href="features/features1.html"><strong aria-hidden="true">3.</strong> Editor Features</a></li><li class="chapter-item expanded "><a href="command/command1.html"><strong aria-hidden="true">4.</strong> Command Line</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Requ Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>There are two ways to install a project: manually and automatically, if your system is <code>Unix</code> then automatically and if your system is <code>Windows</code> then only manually.</p>
+<h2 id="install-automatically"><a class="header" href="#install-automatically">Install automatically</a></h2>
+<pre><code class="language-bash">git clone https://github.com/requiep/requ-im.git &amp;&amp; cd requ-im
+
+source bin/requ.sh
+
+requ -i
+
+requ &lt;path-to-edit-file&gt;
+</code></pre>
+<h2 id="manual-setting"><a class="header" href="#manual-setting">Manual setting</a></h2>
+<pre><code class="language-bash">git clone https://github.com/requiep/requ-im.git &amp;&amp; cd requ-im
+
+python -m pip install --upgrade pip
+
+python -m pip install -r requirements.txt
+
+python setup.py &lt;path-to-edit-file&gt;
+</code></pre>
+<blockquote>
+<p>For installation, you must have installed Python version 3.11 and higher, this is necessary for the correct operation of the application.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="customization-for-yourself"><a class="header" href="#customization-for-yourself">Customization for yourself</a></h1>
+<p>The project has many files that you can edit for yourself, this is necessary for more convenient settings. There are not many such files, but they are, we will analyze each of them, I will also show their basic content.</p>
+<p><code>requ.yml</code> - configuration file where 80% of all information about the application and its data is stored</p>
+<pre><code class="language-yml">screen:
+  keypad: true
+  no_delay: true
+default:
+  default_filename: 'untitled.py'
+  default_highlight: false
+editor:
+  vertical_lines: true
+  vertical_line_sep: '|'
+  color_mode: 'dark'
+  white_space_dot: false
+  white_space_dot_sep: '~'
+path:
+  log_errors_path: ['bin/logs/', 'errors.log']
+</code></pre>
+<p><code>lib/modules/syntax/cnf/syntax.yml</code> - color theme configuration file, you can change the highlighting of tokens to any color from the list of possible</p>
+<pre><code class="language-yml">token: [
+  &quot;white&quot;,
+  &quot;white&quot;
+]
+comment: [
+  &quot;gray&quot;,
+  &quot;gray&quot;
+]
+preproc: [
+  &quot;gray&quot;,
+  &quot;gray&quot;
+]
+[...]
+</code></pre>
+<p><code>lib/modules/syntax/syntax.py</code> - you can also add lexers for other languages or your own in this script, get lexer you can from pygments.lexer website</p>
+<pre><code class="language-python">from pygments.lexers import PythonLexer, CLexer, JsonLexer
+from pygments.lexers.shell import BashLexer
+from pygments_markdown_lexer import MarkdownLexer
+from pygments.lexers.data import YamlLexer
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="editor-features"><a class="header" href="#editor-features">Editor Features</a></h1>
+<p>This editor has many features, such as syntax checking for errors, or highlighting, there are also custom keybindi.</p>
+<h2 id="check-code-syntax-for-errors-flake8"><a class="header" href="#check-code-syntax-for-errors-flake8">Check code syntax for errors flake8</a></h2>
+<p>flake8 version 6.0.0 allows you to take lines of errors or warnings, they can also be set along the path: <code>lib/modules/flake/</code> the whole system is there, also to update the system just press <code>Ctrl + R</code> this will update <code>flake8</code>.</p>
+<h2 id="syntax-highlighting-with-pygments"><a class="header" href="#syntax-highlighting-with-pygments">Syntax highlighting with Pygments</a></h2>
+<p>Code syntax highlighting is performed using <code>Pygments</code>, there is also a folder in which you can edit everything related to highlighting along the path: <code>lib/modules/syntax/</code>, there is also a file for configuring highlighting (it was written earlier) and also a file in which you can add new lexeries for the project to improve work with any programming language.</p>
+<h2 id="hot-keys---make-programming-easier"><a class="header" href="#hot-keys---make-programming-easier">Hot keys - make programming easier</a></h2>
+<p>this editor has hotkeys that make it easier to work with the editor, but you can work without them, it depends on you and your preferences, hotkeys are divided into 3 types:</p>
+<ol>
+<li>File keys table, keys that work with files
+<ul>
+<li>Ctrl+N - New .python file</li>
+<li>Ctrl+S - Save current file</li>
+</ul>
+</li>
+<li>Dictionary layout, keys that work with words and lines
+<ul>
+<li>Ctrl + F - Search word</li>
+<li>Ctrl+R - Remove one line</li>
+<li>Ctrl+E - Update Flake</li>
+</ul>
+</li>
+<li>Move layout, keys that help move in text
+<ul>
+<li>Ctrl+L - Scroll End of text</li>
+<li>Ctrl+B - Scroll Up of text</li>
+<li>Ctrl+T - Move right of line</li>
+<li>Ctrl+D - Move left of line</li>
+<li>Ctrl+A - Set Y down</li>
+<li>Ctrl+K - Set Y top</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="command-line"><a class="header" href="#command-line">Command line</a></h1>
+<p>In our editor, everything is based on the terminal, for this there is our <code>requ</code> command that executes several commands such as: <code>requ</code>, <code>requlib</code>, the last one has not yet been created. The <code>requ</code> command has flags</p>
+<h2 id="flags-for-the-requ-command"><a class="header" href="#flags-for-the-requ-command">Flags for the <code>requ</code> command</a></h2>
+<p>The <code>requ</code> command has several flags that give information, a list of which is here:</p>
+<ul>
+<li><code>-i</code> download all required libraries</li>
+<li><code>-h</code> gives help menu</li>
+<li><code>-c</code> gives the contribution menu</li>
+</ul>
+<h2 id="create-your-own-team-or-learn-from-an-existing-one"><a class="header" href="#create-your-own-team-or-learn-from-an-existing-one">Create your own team or learn from an existing one</a></h2>
+<p>To create your own command or improve it, follow the path: <code>bin/requ.sh</code> in this file, write all the commands and texts. There is also a variable <code>PYTHON</code> which is the path of the python interpreter, you need it to run the setup and also run the file in automatic mode.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
