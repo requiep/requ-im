@@ -88,3 +88,5 @@ class Requ(object):
         while True:
             self.keybind.key_bind()
             self.screen_module.update_screen()
+
+

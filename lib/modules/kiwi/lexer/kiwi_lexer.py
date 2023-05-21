@@ -29,9 +29,9 @@ class KiwiLexer(RegexLexer):
             (r'\$', Text),
         ],
         'basic': [
-            (r'\b(fun|print|import|if|this|return|else|private|package|interpret|class|inline)(\s*)\b',
+            (r'\b(fun|print|open|override|protected|internal|when|import|if|try|this|catch|finally|println|return|else|private|throw|package|interpret|class|inline)(\s*)\b',
              bygroups(Keyword, Whitespace)),
-            (r'\b(false|true|lateinit|load|log|this|by|or|\B\$\w+)(?=[\s)`])',
+            (r'\b(false|auto|Byte|Int|Double|Short|Exception|Bool|true|lateinit|load|log|this|by|or|\B\$\w+)(?=[\s)`])',
              Name.Builtin),
             (r'\B\@\w+', Name.Decorator),
             (r'\A#!.+\n', Comment.Hashbang),
