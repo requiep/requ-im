@@ -1,7 +1,8 @@
 # === Start setup ===
-# It is not advised to change any parameters in screen part.
-# Every change in a screen part can lead to bad consequences in the form of faulty software.
-# In short: Be careful with screen part!
+# Caution: Modifying any parameters in the "screen" section is not recommended.
+# Any changes made to the "screen" section may result in software malfunctions.
+# In summary, exercise caution when modifying the "screen" part!
+
 screen:
   keypad: true
   no_delay: true

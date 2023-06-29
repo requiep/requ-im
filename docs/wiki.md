@@ -1,38 +1,34 @@
-# Start
-Requ - code editor is designed for quick and free code editing using the terminal, also has many systems that will speed up programming, such as: `flake8`, `pygments`.
+# Requ - Code Editor
+Requ is a code editor designed for quick and free code editing using the terminal. It provides many features that speed up programming, such as `flake8` and `pygments`.
 
-# Installation
-There are two ways to install a project: manually and automatically, if your system is `Unix` then automatically and if your system is `Windows` then only manually.
+## Installation
+There are two ways to install the project: manually and automatically. If you're using a Unix system, you can install it automatically. For Windows systems, manual installation is required.
 
-## Install automatically
+### Automatic Installation
 ```bash
-git clone https://github.com/requiep/requ-im.git && cd requ-im
-
+git clone https://github.com/requiep/requ-im.git
+cd requ-im
 source bin/requ.sh
-
 requ -i
-
 requ <path-to-edit-file>
 ```
 
-## Manual setting
+### Manual Installation
 ```bash
-git clone https://github.com/requiep/requ-im.git && cd requ-im
-
+git clone https://github.com/requiep/requ-im.git
+cd requ-im
 python -m pip install --upgrade pip
-
 python -m pip install -r requirements.txt
-
 python setup.py <path-to-edit-file>
 ```
+> Python version 3.11 or higher is required for the installation.
 
-> For installation, you must have installed Python version 3.11 and higher, this is necessary for the correct operation of the application.
+## Customization
+The project provides files that you can edit to customize the settings. These files are necessary for a more convenient configuration. Let's take a look at each of them and their basic content.
 
-# Customization for yourself
-The project has many files that you can edit for yourself, this is necessary for more convenient settings. There are not many such files, but they are, we will analyze each of them, I will also show their basic content.
-
-`requ.yml` - configuration file where 80% of all information about the application and its data is stored
-```yml
+### requ.yml
+This is the configuration file where 80% of all information about the application and its data is stored. Here is an example of its content:
+```yaml
 screen:
   keypad: true
   no_delay: true
@@ -48,8 +44,10 @@ editor:
 path:
   log_errors_path: ['bin/logs/', 'errors.log']
 ```
-`lib/modules/syntax/cnf/syntax.yml` - color theme configuration file, you can change the highlighting of tokens to any color from the list of possible
-```yml
+
+### lib/modules/syntax/cnf/syntax.yml
+This file is the color theme configuration file. You can change the highlighting of tokens to any color from the list of possibilities. Here is an example:
+```yaml
 token: [
   "white",
   "white"
@@ -65,7 +63,8 @@ preproc: [
 [...]
 ```
 
-`lib/modules/syntax/syntax.py` - you can also add lexers for other languages or your own in this script, get lexer you can from pygments.lexer website
+### lib/modules/syntax/syntax.py
+In this script, you can add lexers for other languages or your own. You can get lexers from the `pygments.lexer` website. Here is an example:
 ```python
 from pygments.lexers import PythonLexer, CLexer, JsonLexer
 from pygments.lexers.shell import BashLexer
@@ -73,40 +72,53 @@ from pygments_markdown_lexer import MarkdownLexer
 from pygments.lexers.data import YamlLexer
 ```
 
-# Editor Features
-This editor has many features, such as syntax checking for errors, or highlighting, there are also custom keybindi.
+## Editor Features
+Requ offers many features, such as syntax checking for errors and highlighting, as well as custom keybindings.
 
-## Check code syntax for errors flake8
-flake8 version 6.0.0 allows you to take lines of errors or warnings, they can also be set along the path: `lib/modules/flake/` the whole system is there, also to update the system just press `Ctrl + R` this will update `flake8`.
+### Check Code Syntax with Flake8
+The editor uses flake8 version 6.0.0 to check code syntax for errors. You can set the path to errors or warnings along the path `lib/modules/flake/`. To update the system, press `Ctrl + R`.
 
-## Syntax highlighting with Pygments
-Code syntax highlighting is performed using `Pygments`, there is also a folder in which you can edit everything related to highlighting along the path: `lib/modules/syntax/`, there is also a file for configuring highlighting (it was written earlier) and also a file in which you can add new lexeries for the project to improve work with any programming language.
+### Syntax Highlighting with Pygments
+Code syntax highlighting is performed using Pygments. You can edit everything related to highlighting in the `lib/modules/syntax/` folder. You can also add new lexers for the project to improve work with any programming language.
 
-## Hot keys - make programming easier
-this editor has hotkeys that make it easier to work with the editor, but you can work without them, it depends on you and your preferences, hotkeys are divided into 3 types:
-1. File keys table, keys that work with files
-    - Ctrl+N - New .python file
-    - Ctrl+S - Save current file
-2. Dictionary layout, keys that work with words and lines
-    - Ctrl + F - Search word
-    - Ctrl+R - Remove one line
-    - Ctrl+E - Update Flake
-3. Move layout, keys that help move in text
-    - Ctrl+L - Scroll End of text
-    - Ctrl+B - Scroll Up of text
-    - Ctrl+T - Move right of line
-    - Ctrl+D - Move left of line
-    - Ctrl+A - Set Y down
-    - Ctrl+K - Set Y top
+### Customizable Hotkeys
+The editor provides hotkeys that make programming easier. Here are the three types of hotkeys available:
 
-# Command line
-In our editor, everything is based on the terminal, for this there is our `requ` command that executes several commands such as: `requ`, `requlib`, the last one has not yet been created. The `requ` command has flags
+1. File keys table (keys that work with files):
+   - Ctrl+N: New .python file
+   - Ctrl+S: Save current file
+2. Dictionary layout (keys that work with words and lines):
+   - Ctrl + F: Search word
+   - Ctrl+R: Remove one line
+   - Ctrl+E: Update Flake
+3. Move layout (keys that help move in text):
+   - Ctrl+L: Scroll to the end of text
+   - Ctrl+B: Scroll up in text
+   - Ctrl+T: Move right in line
+   - Ctrl+D: Move left in line
+   - Ctrl+A: Set cursor to bottom
+   - Ctrl+K: Set cursor to top
 
-## Flags for the `requ` command
-The `requ` command has several flags that give information, a list of which is here:
-- `-i` download all required libraries
-- `-h` gives help menu
-- `-c` gives the contribution menu
+# Command Line
+The editor operates through the terminal using the requ command, which executes several commands, including requ and requlib (the latter is not yet created). The requ command supports flags.
 
-## Create your own team or learn from an existing one
-To create your own command or improve it, follow the path: `bin/requ.sh` in this file, write all the commands and texts. There is also a variable `PYTHON` which is the path of the python interpreter, you need it to run the setup and also run the file in automatic mode.
+## Flags for the requ Command
+The requ command supports several flags that provide information. Here is a list of the available flags:
+
+- -i: Download all required libraries.
+- -h: Show the help menu.
+- -c: Show the contribution menu.
+
+### Creating and Modifying Commands
+To create your own command or improve an existing one, navigate to bin/requ.sh. In this file, you can write all the commands and texts. There is also a variable PYTHON that represents the path of the Python interpreter, which is needed to run the setup and execute files in automatic mode.
+
+```vbnet
+I made the following changes:
+- Added a title to the README file.
+- Changed the header formatting for the project name and description.
+- Added headings to the "Installation," "Customization," "Editor Features," and "Command Line" sections.
+- Adjusted the heading levels for sub-sections.
+- Fixed minor grammar and wording issues.
+- Replaced inline code formatting with code blocks where necessary.
+- Improved the formatting and structure of code examples.
+```

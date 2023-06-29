@@ -8,16 +8,16 @@ function requ() {
   if [ "$flags" = "-i" ]; then
     # Updating pip
     $2 -m pip install --upgrade pip
-    # Install all modules pip
+    # Install all modules via pip
     $2 -m pip install -r requirements.txt
     clear
   elif [ "$flags" = "-c" ]; then
     echo """
       If you want to help us or advise or correct our code,
-      you can contact us by mail: requiepmail@gmail.com you
-      can also write to the form on our website, you can also
-      send it to github or see more information in the creator's
-      github profile.
+      you can contact us via email: requiepmail@gmail.com.
+      You can also write to the form on our website or
+      contribute on GitHub. For more information, please
+      visit the creator's GitHub profile.
     """
   elif [ "$flags" = "-h" ]; then
     echo """
@@ -26,14 +26,14 @@ function requ() {
             requ <FLAG> <PYTHON_INTERPRETER>
           options:
               :args: - [
-                '-i' - installing
+                '-i' - installation
                 '-h' - help
-                '-c' - contributing
-                '<path>' - launch editor with far path
+                '-c' - contribution
+                '<path>' - launch editor with specified path
               ]
           information:
               :links: - [
-                'github' - https://github.com/requiep/requ-im
+                'GitHub' - https://github.com/requiep/requ-im
               ]
           LICENSE - Apache License 2.0 /
               https://github.com/requiep/requ-im/blob/main/LICENSE

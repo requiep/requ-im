@@ -1,7 +1,7 @@
+from editor import Requ
+
 import curses
 import sys
-
-from editor import Requ
 
 
 def main(*args) -> None:
@@ -15,4 +15,3 @@ def main(*args) -> None:
 
 if __name__ == "__main__":
     curses.wrapper(main)
-
