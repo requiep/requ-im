@@ -17,4 +17,3 @@ editor:
   white_space_dot_sep: '~'
 path:
   log_errors_path: ['bin/logs/', 'errors.log']
-

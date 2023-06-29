@@ -1,6 +1,11 @@
 ## Changelog
 All notable changes to this project will be documented in this file.
 
+### 1.23.14
+- Fixed wiki.md file, now there is documentation about plugins
+- Added beta test plugin system
+- Documentation book deleted
+
 ### 1.23.13
 - Fixed and added startup files
 - Fixed text files such as:
