@@ -76,7 +76,7 @@ from pygments.lexers.data import YamlLexer
 Requ offers many features, such as syntax checking for errors and highlighting, as well as custom keybindings.
 
 ### Check Code Syntax with Flake8
-The editor uses flake8 version 6.0.0 to check code syntax for errors. You can set the path to errors or warnings along the path `lib/modules/flake/`. To update the system, press `Ctrl + R`.
+The editor uses flake8 version 6.0.0 to check code syntax for errors. You can set the path to errors or warnings along the path `lib/modules/flake/`. To update the system, press `Ctrl + E`.
 
 ### Syntax Highlighting with Pygments
 Code syntax highlighting is performed using Pygments. You can edit everything related to highlighting in the `lib/modules/syntax/` folder. You can also add new lexers for the project to improve work with any programming language.

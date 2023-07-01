@@ -13,11 +13,16 @@ class FileSystem(object):
         self.funcs_.reset_editor()
         try:
             with open(filename, 'r') as f:
-                content = f.read().split('\n')
+                content = f.readlines()
                 for row in content[:-1]:
                     self.funcs_.buffer.append([ord(c) for c in row])
                 self.funcs_.buffer.append([ord(c) for c in content[-1]])
         except Exception as error:
+            with open(filename, 'w') as f:
+                content = [[]]
+                for row in content[:-1]:
+                    self.funcs_.buffer.append([ord(c) for c in row])
+                self.funcs_.buffer.append([ord(c) for c in content[-1]])
             self.funcs_.buffer.append([])
             self.logger.logger('open_file', f'{error}')
         if filename:

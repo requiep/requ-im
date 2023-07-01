@@ -11,16 +11,14 @@ class KeyBind(object):
                 "b": self.editor.funcs.scroll_home,
                 "n": self.editor.file_system.new_file,
                 "s": self.editor.file_system.save_file,
-                "f": self.editor.funcs.search,
+                "f": self.editor.prompt.search,
                 "r": self.editor.funcs.delete_line,
                 "l": self.editor.funcs.scroll_end,
                 "t": self.editor.funcs.scroll_right,
                 "d": self.editor.funcs.scroll_left,
                 "a": self.editor.funcs.y_down,
                 "k": self.editor.funcs.y_up,
-                "e": self.editor.screen_module.reload_flake
-            },
-        }
+                "e": self.editor.screen_module.reload_flake}}
 
     @staticmethod
     def _ctrl(code: int = 0) -> int:

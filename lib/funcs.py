@@ -139,19 +139,6 @@ class Functions(object):
             except Exception as error:
                 self.logger.logger('skip_word_1', f'{error}')
 
-    def search(self) -> None:
-        self.search_results = []
-        self.search_index = 0
-        word = self.editor.command_prompt('search:')
-        for row in range(len(self.buffer)):
-            buffer_row = self.buffer[row]
-            for col in range(len(buffer_row)):
-                if ''.join([chr(c) for c in buffer_row[col:col + len(word)]]) == word:
-                    self.search_results.append([row, col])
-        if len(self.search_results):
-            self.current_y, self.current_x = self.search_results[self.search_index]
-            self.search_index += 1
-
     def scroll_end(self) -> None:
         while self.current_y < self.total_lines - 1:
             self.scroll_page(curses.KEY_NPAGE)

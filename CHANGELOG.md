@@ -1,6 +1,12 @@
 ## Changelog
 All notable changes to this project will be documented in this file.
 
+### 1.23.15
+- The system for entering and searching for words has been changed
+- Changed file manager system
+- Changed and added more precise documentation
+- Fix bugs in the logging system
+
 ### 1.23.14
 - Fixed wiki.md file, now there is documentation about plugins
 - Added beta test plugin system
