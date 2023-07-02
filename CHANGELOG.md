@@ -1,6 +1,9 @@
 ## Changelog
 All notable changes to this project will be documented in this file.
 
+### 1.23.16.01
+- Security policy update
+
 ### 1.23.16
 - Editor site added
   - SEO added
