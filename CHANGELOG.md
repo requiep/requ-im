@@ -1,6 +1,12 @@
 ## Changelog
 All notable changes to this project will be documented in this file.
 
+### 1.23.16
+- Editor site added
+  - SEO added
+  - Project logo created
+- Created a special file dev.txt
+
 ### 1.23.15
 - The system for entering and searching for words has been changed
 - Changed file manager system

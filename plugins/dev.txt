@@ -1,0 +1,67 @@
+RequIm - a simple text editor for everything.
+This code editor is very simple, and its philosophy is also minimal. 
+It occupies minimal memory on your device and is built on Python, 
+which itself is cross-platform. However, there are some downsides: 
+it is quite slow, although this is almost unnoticeable due to the 
+size of the project itself. You can download it from our GitHub 
+page: https://github.com/requiep/requ-im. You can also find more 
+information there. The philosophy of this project lies in the 
+fact that you can open text files of any size in this editor. 
+The file is read differently here, with the text organized as a 
+two-dimensional matrix where the columns are emphasized. However, 
+this feature consumes most of the resources, but it can be turned 
+off in the configuration file, requ.yml.
+
+Syntax highlighting:
+Syntax highlighting is present in this editor, implemented through
+the pygments module. It offers many functionalities, from creating 
+your own lexer for highlighting to supporting highlighting for 
+almost all programming languages. The module is easy to integrate 
+into your own project. All the code for syntax highlighting can be 
+found in the folder lib/modules/syntax/[...]. You can also add your 
+own lexers or install them using plugins that can be downloaded 
+from our website.
+
+Python syntax check with flake8:
+This project also includes a cool feature called syntax check, 
+following the pep8 standards. This is for convenience and to 
+encourage proper and beautiful code writing in Python. The settings 
+for this feature can be found in the directory where the flake 
+module is located, specifically in lib/modules/flake/[...].
+
+Hotkey system:
+Hotkeys are a crucial aspect of this project as they significantly 
+speed up code writing. There is a simple system that allows you to 
+edit the hotkeys, just like any other aspect of the project. To do 
+this, go to the lib/ folder and find the keybind.py file. You can 
+add your own hotkeys there or add them using plugins. All keys are 
+arranged optimally from my point of view. You can also change the 
+layout to Vim or the classic one, or create your own layout. This 
+can be done through code, but it's better to use plugins as it 
+simplifies the process and reduces the chance of errors.
+
+Plugin system:
+This project supports plugins, which work in a simple manner. 
+A plugin is just a piece of code that takes arguments and interacts
+with the existing code. Creating plugins is straightforward. 
+You need to create a Python class object and write an __init__ 
+function that accepts *args. Then, you can access the elements 
+through indexes. For example, the first element passed via *args 
+is a dictionary that contains editor elements such as the file manager, 
+syntax highlighting, configurations, and the editor class itself.
+-----------------------------------------------------------------------------
+You can move through the file with the help of the cursor, as well as with the arrows on
+keyboard and letters : down : Ctrl+A, up : Ctrl+K
+
+You can also move around the file using the mouse, but also through the keys
+for example: To the end of the file: Ctrl+L, to the beginning of the text: Ctrl+B
+
+You can also move around the line using the keys : Line Left : Ctrl+D,
+right line : Ctrl+T, Delete line : Ctrl+R
+
+Find the right word in the file : Ctrl+F, update flake8 for python : Ctrl+E
+
+Save file with Ctrl+S, create new file with Ctrl+N
+
+Close editor : Ctrl+Q
+-----------------------------------------------------------------------------

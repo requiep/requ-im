@@ -1,7 +1,7 @@
 ![badge](https://img.shields.io/github/languages/top/requiep/requ-im)
 ![badge](https://img.shields.io/github/languages/code-size/requiep/requ-im)
 ![badge](https://img.shields.io/github/license/requiep/requ-im)
-![badge](https://img.shields.io/badge/version-1.23.15-informational)
+![badge](https://img.shields.io/badge/version-1.23.16-informational)
 ![badge](https://img.shields.io/badge/platform-MacOS%2C%20Linux%2C%20Windows-lightgrey)
 
 # Requ - A Text Editor for Code and Texts

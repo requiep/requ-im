@@ -49,17 +49,11 @@ path:
 This file is the color theme configuration file. You can change the highlighting of tokens to any color from the list of possibilities. Here is an example:
 ```yaml
 token: [
-  "white",
-  "white"
-]
+  "white", "white"]
 comment: [
-  "gray",
-  "gray"
-]
+  "gray", "gray"]
 preproc: [
-  "gray",
-  "gray"
-]
+  "gray", "gray"]
 [...]
 ```
 
@@ -88,7 +82,7 @@ The editor provides hotkeys that make programming easier. Here are the three typ
    - Ctrl+N: New .python file
    - Ctrl+S: Save current file
 2. Dictionary layout (keys that work with words and lines):
-   - Ctrl + F: Search word
+   - Ctrl+F: Search word
    - Ctrl+R: Remove one line
    - Ctrl+E: Update Flake
 3. Move layout (keys that help move in text):
