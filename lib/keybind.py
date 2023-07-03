@@ -6,7 +6,11 @@ class KeyBind(object):
         self.editor = editor
 
         self.keys_dict: dict = {
-            "ctrl": {
+            "counted": {
+                9: self._tab,
+                353: self._remove_tab,
+                127: self._remove_char
+            }, "ctrl": {
                 "q": self.editor.exit,
                 "b": self.editor.funcs.scroll_home,
                 "n": self.editor.file_system.new_file,
@@ -20,6 +24,15 @@ class KeyBind(object):
                 "k": self.editor.funcs.y_up,
                 "e": self.editor.screen_module.reload_flake}}
 
+    def _tab(self) -> None:
+        [self.editor.funcs.insert_char(ord(' ')) for i in range(4)]
+
+    def _remove_tab(self) -> None:
+        [self.editor.funcs.delete_char() for i in range(4) if self.editor.funcs.current_x]
+
+    def _remove_char(self) -> None:
+        [self.editor.funcs.delete_char() for i in range(1)]
+
     @staticmethod
     def _ctrl(code: int = 0) -> int:
         return code & 0x1f
@@ -31,17 +44,14 @@ class KeyBind(object):
         for ctrl_ in self.keys_dict['ctrl']:
             if c == self._ctrl(ord(ctrl_)):
                 self.keys_dict['ctrl'][ctrl_]()
+        for counted_ in self.keys_dict['counted']:
+            if c == int(counted_):
+                self.keys_dict['counted'][counted_]()
         self.command_keybind(c)
 
     def command_keybind(self, c: int = 0) -> None:
         if c == ord('\n'):
             self.editor.funcs.insert_line()
-        elif c == 9:
-            [self.editor.funcs.insert_char(ord(' ')) for i in range(4)]
-        elif c == 353:
-            [self.editor.funcs.delete_char() for i in range(4) if self.editor.funcs.current_x]
-        elif c == 127:
-            [self.editor.funcs.delete_char() for i in range(1) if self.editor.funcs.current_x]
         elif c == 560:
             self.editor.funcs.skip_word(560)
         elif c == 545:

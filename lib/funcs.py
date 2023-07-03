@@ -48,10 +48,10 @@ class Functions(object):
         self.modified += 1
 
     def delete_char(self) -> None:
-        if self.current_x:
+        if not self.current_x == 0:
             self.current_x -= 1
             del self.buffer[self.current_y][self.current_x]
-        elif self.current_x == 0 and self.current_y:
+        else:
             old_line = self.buffer[self.current_y][self.current_x:]
             del self.buffer[self.current_y]
             self.current_y -= 1

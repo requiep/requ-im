@@ -51,7 +51,7 @@ class RequPrompt(object):
                 sys.stdout.write('\b')
                 sys.stdout.flush()
                 word = word[:len(word) - 1]
-            if c != curses.KEY_BACKSPACE:
+            if not c == 127:
                 pos += 1
                 sys.stdout.write(chr(c))
                 sys.stdout.flush()

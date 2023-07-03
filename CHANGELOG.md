@@ -1,6 +1,13 @@
 ## Changelog
 All notable changes to this project will be documented in this file.
 
+### 1.23.17
+- Fix bugs
+- Fix bugs with deleting characters
+- Fix bugs with text input fields
+- Keybinding system changed
+- Fix file system bugs
+
 ### 1.23.16.01
 - Security policy update
 

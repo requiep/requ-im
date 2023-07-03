@@ -38,7 +38,7 @@ class FileSystem(object):
         with open(self.funcs_.filename, 'w') as f:
             content = ''
             for row in self.funcs_.buffer:
-                content += ''.join([chr(c) for c in row]) + '\n'
+                content += ''.join([chr(c) for c in row])
             f.write(content)
         self.funcs_.modified = 0
 
